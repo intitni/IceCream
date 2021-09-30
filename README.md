@@ -14,6 +14,8 @@ IceCream helps you sync Realm Database with CloudKit.
 
 > It works like magic!
 
+A fork that I use internally to depend on a specific version of Realm
+
 ## Features
 
 - Realm Database
