@@ -1,28 +1,37 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.5
 import PackageDescription
 
 let package = Package(
     name: "IceCream",
     platforms: [
-        .macOS(.v10_12), .iOS(.v10), .tvOS(.v10), .watchOS(.v3)
+        .macOS(.v10_12), .iOS(.v10), .tvOS(.v10), .watchOS(.v3),
     ],
     products: [
         .library(
             name: "IceCream",
-            targets: ["IceCream"]),
+            targets: ["IceCream", "Realm", "RealmSwift"]
+        ),
     ],
     dependencies: [
-        .package(
-            url: "https://github.com/realm/realm-cocoa", 
-            from: "4.1.1"
-        )
     ],
     targets: [
         .target(
             name: "IceCream",
-            dependencies: ["RealmSwift", "Realm"],
+            dependencies: ["Realm", "RealmSwift"],
             path: "IceCream",
-            sources: ["Classes"])
+            exclude: ["./info.plist"],
+            sources: ["Classes"]
+        ),
+        .binaryTarget(
+            name: "Realm",
+            url: "https://github.com/intitni/IceCream/releases/download/2021.0.0/Realm.xcframework.zip",
+            checksum: "1949fdd92ab82a89b7f768bd9ce623932e72fa33f46d3aed099cd9a381d8420a"
+        ),
+        .binaryTarget(
+            name: "RealmSwift",
+            url: "https://github.com/intitni/IceCream/releases/download/2021.0.0/RealmSwift.xcframework.zip",
+            checksum: "dee856d492a4f53c1ec1d66404ebdd4b4289f95dd79af6df2e07d16484cb31dc"
+        ),
     ],
     swiftLanguageVersions: [.v5]
 )
