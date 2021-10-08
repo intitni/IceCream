@@ -19,7 +19,7 @@ let package = Package(
             name: "IceCream",
             dependencies: ["Realm", "RealmSwift"],
             path: "IceCream",
-            exclude: ["./info.plist"],
+            exclude: ["Info.plist"],
             sources: ["Classes"]
         ),
         .binaryTarget(
